@@ -8,7 +8,11 @@
         }
     },
     "author": "mh-anwar",
-
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "your-addon-id@example.com"
+        }
+    },
     "content_scripts": [
         {
             "matches": ["<all_urls>"],
@@ -16,27 +20,22 @@
             "css": ["contentStyling.css"]
         }
     ],
-    "description": "Basic Boilerplate for MV3 Extensions",
+    "description": "FocusGuard keeps you focussed.",
     "icons": {
         "16": "images/icon_16.png",
         "32": "images/icon_32.png",
         "48": "images/icon_48.png",
         "128": "images/icon_128.png"
     },
+
     "manifest_version": 3,
-    "name": "MV3 Extension Boilerplate",
+    "name": "FocusGuard",
     "options_ui": {
         "page": "options/options.html",
         "open_in_tab": true
     },
 
     "permissions": ["storage"],
-    "short_name": "MV3 Extension",
-    "version": "1.0.0",
-    "web_accessible_resources": [
-        {
-            "resources": ["randomData.json", "t"],
-            "matches": ["<all_urls>"]
-        }
-    ]
+    "short_name": "FocusGuard",
+    "version": "1.0.0"
 }

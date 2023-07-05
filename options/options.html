@@ -14,7 +14,7 @@
     <h1>FocusGuard</h1>
     <ul class="tabs">
         <li><a href="#tab1" class="active">General Settings</a></li>
-        <li><a href="#tab2">Blocked Sites</a></li>
+        <li><a href="#tab2">Banned Sites</a></li>
         <li><a href="#tab3">Allowed Sites</a></li>
         <li><a href="#tab4">Emergency Lockdown</a></li>
     </ul>
@@ -27,13 +27,31 @@
     </div>
 
     <div id="tab2" class="tab-content">
-        <h3>Tab 2 Content</h3>
-        <p>This is the content of Tab 2.</p>
+        <ul>
+            <li>Add one site per line</li>
+            <li>To block the entire site simply use <code>instagram.com</code> instead of
+                <code>https://instagram.com/helloworld/#test</code>
+            </li>
+        </ul>
+        <textarea id="banned_sites"></textarea>
+        <button id="submit_banned_sites">Add Banned Sites</button>
+        <br />
+        <div>
+            <h2>Common Banned Sites</h2>
+            <p>Click a site to add it to you list</p>
+            <div class="common-sites-list" id="common_banned_sites"></div>
+        </div>
     </div>
 
     <div id="tab3" class="tab-content">
-        <h3>Tab 3 Content</h3>
-        <p>This is the content of Tab 3.</p>
+        <ul>
+            <li>Add one site per line</li>
+            <li>To allow the entire site simply use <code>instagram.com</code> instead of
+                <code>https://instagram.com/helloworld/#test</code>
+            </li>
+        </ul>
+        <textarea id="allowed_sites"></textarea>
+        <button id="submit_allowed_sites">Add Allowed Sites</button>
     </div>
     <div id="tab4" class="tab-content">
         <h3>Tab 4 Content</h3>

@@ -30,7 +30,8 @@
    }
 
    .tab-content.active {
-       display: block;
+       display: flex;
+       flex-direction: column;
    }
 
    body {
@@ -104,4 +105,15 @@
 
    .slider.round:before {
        border-radius: 50%;
+   }
+
+   .common-sites-list {
+       max-height: 40em;
+       overflow-y: scroll;
+   }
+
+   .common-site {
+       color: rebeccapurple;
+       cursor: pointer;
+       padding: 0.5em;
    }
