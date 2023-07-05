@@ -1,5 +1,43 @@
 const tabs = document.querySelectorAll('.tabs li a');
 const tabContents = document.querySelectorAll('.tab-content');
+const darkModeToggle = document.getElementById('darkModeToggle');
+let submitBannedSites = document.getElementById('submit_banned_sites');
+let bannedSites = document.getElementById('banned_sites_list');
+let submitAllowedSites = document.getElementById('submit_allowed_sites');
+let allowedSites = document.getElementById('allowed_sites');
+let commonSitesView = document.getElementById('common_sites_view');
+const bannedSitesView = document.getElementById('banned_sites_view');
+const commonBanned = [
+    'facebook.com',
+    'twitter.com',
+    'instagram.com',
+    'reddit.com',
+    'youtube.com',
+    'netflix.com',
+    'tiktok.com',
+    'tumblr.com',
+    'pinterest.com',
+    'linkedin.com',
+    'whatsapp.com',
+    'snapchat.com',
+    'quora.com',
+    'telegram.com',
+    'twitch.tv',
+    'amazon.com',
+    'ebay.com',
+    'wikipedia.org',
+    'imdb.com',
+    'spotify.com',
+    'craigslist.org',
+    'yelp.com',
+    'etsy.com',
+    'bing.com',
+    'yahoo.com',
+    'duckduckgo.com',
+    'baidu.com',
+    'aol.com',
+    'ask.com',
+];
 
 tabs.forEach((tab) => {
     tab.addEventListener('click', (e) => {
@@ -14,18 +52,10 @@ tabs.forEach((tab) => {
     });
 });
 
-const darkModeToggle = document.getElementById('darkModeToggle');
-const body = document.body;
-
 darkModeToggle.addEventListener('change', () => {
-    body.classList.toggle('dark-mode');
+    document.body.classList.toggle('dark-mode');
 });
 
-let submitBannedSites = document.getElementById('submit_banned_sites');
-let bannedSites = document.getElementById('banned_sites');
-let submitAllowedSites = document.getElementById('submit_allowed_sites');
-let allowedSites = document.getElementById('allowed_sites');
-let commonBannedSites = document.getElementById('common_banned_sites');
 function updateBannedSites() {
     let sites = bannedSites.value;
     let sitesDict = {};
@@ -53,54 +83,25 @@ function updateAllowedSites() {
     chrome.storage.sync.set({ focusSites: sites });
 }
 function updateCommonSites() {
-    let commonBanned = [
-        'facebook.com',
-        'twitter.com',
-        'instagram.com',
-        'reddit.com',
-        'youtube.com',
-        'netflix.com',
-        'tiktok.com',
-        'tumblr.com',
-        'pinterest.com',
-        'linkedin.com',
-        'whatsapp.com',
-        'snapchat.com',
-        'quora.com',
-        'telegram.com',
-        'twitch.tv',
-        'amazon.com',
-        'ebay.com',
-        'wikipedia.org',
-        'imdb.com',
-        'spotify.com',
-        'craigslist.org',
-        'yelp.com',
-        'etsy.com',
-        'bing.com',
-        'yahoo.com',
-        'duckduckgo.com',
-        'baidu.com',
-        'aol.com',
-        'ask.com',
-    ];
-
-    let commonAllowedSites = [
-        'github.com',
-        'stackoverflow.com',
-        'medium.com',
-        'gmail.com',
-        'google.com',
-    ];
-    //loop through common banned
     for (let i = 0; i < commonBanned.length; i++) {
         let site = commonBanned[i];
         let siteDiv = document.createElement('div');
-        siteDiv.classList.add('common-site');
         siteDiv.innerText = '+ ' + site;
-        commonBannedSites.appendChild(siteDiv);
+        commonSitesView.appendChild(siteDiv);
     }
+}
+function displayMyBannedSites() {
+    chrome.storage.sync.get('focusSites', (data) => {
+        let sites = data.focusSites;
+        for (let i = 0; i < sites.length; i++) {
+            let site = sites[i];
+            let siteDiv = document.createElement('div');
+            siteDiv.innerText = 'x ' + site;
+            bannedSitesView.appendChild(siteDiv);
+        }
+    });
 }
 submitAllowedSites.addEventListener('click', updateAllowedSites);
 submitBannedSites.addEventListener('click', updateBannedSites);
 updateCommonSites();
+displayMyBannedSites();

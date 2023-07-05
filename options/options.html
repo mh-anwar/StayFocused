@@ -11,13 +11,15 @@
 </head>
 
 <body>
-    <h1>FocusGuard</h1>
-    <ul class="tabs">
-        <li><a href="#tab1" class="active">General Settings</a></li>
-        <li><a href="#tab2">Banned Sites</a></li>
-        <li><a href="#tab3">Allowed Sites</a></li>
-        <li><a href="#tab4">Emergency Lockdown</a></li>
-    </ul>
+    <div class="header">
+        <h1>FocusGuard</h1>
+        <ul class="tabs">
+            <li><a href="#tab1" class="active">General Settings</a></li>
+            <li><a href="#tab2">Banned Sites</a></li>
+            <li><a href="#tab3">Allowed Sites</a></li>
+            <li><a href="#tab4">Emergency Lockdown</a></li>
+        </ul>
+    </div>
 
     <div id="tab1" class="tab-content active">
         <label class="switch">
@@ -33,13 +35,22 @@
                 <code>https://instagram.com/helloworld/#test</code>
             </li>
         </ul>
-        <textarea id="banned_sites"></textarea>
-        <button id="submit_banned_sites">Add Banned Sites</button>
-        <br />
+        <div class="banned-interface">
+            <div class="add-banned-sites">
+                <h2>Add Banned Sites</h2>
+                <textarea id="banned_sites_list"></textarea>
+                <button id="submit_banned_sites">Add Banned Sites</button>
+            </div>
+
+            <div>
+                <h2>Common Banned Sites</h2>
+                <p>Click a site to add it to your list</p>
+                <div class="common-sites-list" id="common_sites_view"></div>
+            </div>
+        </div>
         <div>
-            <h2>Common Banned Sites</h2>
-            <p>Click a site to add it to you list</p>
-            <div class="common-sites-list" id="common_banned_sites"></div>
+            <h2>Your List</h2>
+            <div class="common-sites-list" id="banned_sites_view"></div>
         </div>
     </div>
 
