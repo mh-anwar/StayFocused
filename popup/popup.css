@@ -1,0 +1,55 @@
+html,
+body {
+    min-width: 500px !important;
+    min-height: 200px !important;
+    text-align: center;
+    font-size: 18px;
+}
+
+.time-info {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 0.3em;
+    gap: 0.3em;
+}
+
+.focus-time {
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5em;
+    border-radius: 0.5em;
+}
+
+.website-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.website-info:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.links {
+    border-top: 1px solid #ccc;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 0.3em;
+    gap: 0.3em;
+}
+
+.time-cell {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 19px;
+    font-weight: bold;
+
+}
