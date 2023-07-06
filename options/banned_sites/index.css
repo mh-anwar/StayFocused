@@ -18,7 +18,11 @@ body {
     text-align: left;
 }
 
-
+.banned-sites-list td {
+    border-top: 1px solid #ccc;
+    margin: 0.5em;
+    padding: 0.5em;
+}
 
 .banned-sites-list span {
     padding: 0.5em;
@@ -64,14 +68,15 @@ body {
     padding: 0.5em;
 }
 
-textarea {
-    font-size: 20px;
+textarea,
+input[type=text] {
     outline: none;
-    min-height: 10em;
     border-radius: 0.5em;
-    padding: 0.5em;
     border: 1px solid #ccc;
-    margin: 0.5em;
+
+    padding: 0.5em;
+    font-size: 16px;
+    width: 90%;
 }
 
 button {
@@ -91,7 +96,8 @@ input[type=number] {
     font-size: 16px;
 }
 
-input[type=number]:focus {
+input[type=number]:focus,
+input[type=text]:focus {
     outline: none;
     border-color: #2196F3;
     box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
