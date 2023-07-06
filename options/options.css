@@ -19,16 +19,16 @@
        min-height: 90vh;
    }
 
+
    .header {
        display: flex;
-       flex-direction: row;
+       flex-direction: column;
        flex-wrap: wrap;
        justify-content: space-between;
        align-items: center;
        padding: 1em;
        background-color: #148ef2;
        border-radius: 0.5em;
-
    }
 
    .tabs {
@@ -48,6 +48,7 @@
    }
 
    .tabs li a {
+       border-radius: 0.3em;
        display: block;
        padding: 0.5em;
        background-color: #f1f1f1;
@@ -64,11 +65,9 @@
        background-color: #9d9999;
    }
 
-   /* Tab Content */
    .tab-content {
        display: none;
        padding: 1em;
-       border-top: 1px solid #ccc;
    }
 
    .tab-content.active {
@@ -76,67 +75,103 @@
        flex-direction: column;
    }
 
-
-
-   .dark-mode {
-       background-color: black;
-       color: white;
+   .working-info {
+       display: flex;
+       flex-direction: column;
+       flex-wrap: wrap;
+       justify-content: space-between;
+       margin-top: 1em;
    }
 
-   /*Toggle Switch*/
-   .switch {
+   .working-info span {
+       display: flex;
+       flex-direction: row;
+       flex-wrap: wrap;
+       justify-content: space-between;
+
+   }
+
+   /* The container */
+   .check-day-cont {
+       display: block;
        position: relative;
-       display: inline-block;
-       width: 60px;
-       height: 34px;
-   }
-
-   .switch input {
-       opacity: 0;
-       width: 0;
-       height: 0;
-   }
-
-   .slider {
-       position: absolute;
+       padding-left: 35px;
+       margin-bottom: 12px;
        cursor: pointer;
+       font-size: 22px;
+       -webkit-user-select: none;
+       -moz-user-select: none;
+       -ms-user-select: none;
+       user-select: none;
+   }
+
+   .check-day-cont input {
+       position: absolute;
+       opacity: 0;
+       cursor: pointer;
+       height: 0;
+       width: 0;
+   }
+
+   .checkmark {
+       position: absolute;
        top: 0;
        left: 0;
-       right: 0;
-       bottom: 0;
-       background-color: #ccc;
-       -webkit-transition: .4s;
-       transition: .4s;
-       border-radius: 1em;
-   }
-
-   .slider:before {
-       position: absolute;
-       content: "";
-       height: 26px;
-       width: 26px;
-       left: 4px;
-       bottom: 4px;
-       background-color: white;
-       -webkit-transition: .4s;
-       transition: .4s;
+       height: 25px;
+       width: 25px;
+       background-color: #eee;
        border-radius: 50%;
    }
 
-   input:checked+.slider {
+   .check-day-cont:hover input~.checkmark {
+       background-color: #ccc;
+   }
+
+   .check-day-cont input:checked~.checkmark {
        background-color: #2196F3;
    }
 
-   input:focus+.slider {
-       box-shadow: 0 0 1px #2196F3;
+   .checkmark:after {
+       content: "";
+       position: absolute;
+       display: none;
    }
 
-   input:checked+.slider:before {
-       -webkit-transform: translateX(26px);
-       -ms-transform: translateX(26px);
-       transform: translateX(26px);
+   .check-day-cont input:checked~.checkmark:after {
+       display: block;
    }
 
+   .check-day-cont .checkmark:after {
+       left: 9px;
+       top: 5px;
+       width: 5px;
+       height: 10px;
+       border: solid white;
+       border-width: 0 3px 3px 0;
+       transform: rotate(45deg);
+   }
+
+   .working-hours {
+       display: flex;
+       align-items: center;
+       gap: 10px;
+       max-width: min-content;
+   }
+
+   input[type=number],
+   select {
+       padding: 0.8em;
+       font-size: 16px;
+       border: 1px solid #ccc;
+       border-radius: 4px;
+   }
+
+   input[type=number]:focus,
+   select:focus {
+       outline: none;
+       border-color: #2196F3;
+       box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+   }
 
    button {
        border: 1px solid #ccc;

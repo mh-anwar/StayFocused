@@ -1,6 +1,6 @@
 let timeRemainingValue;
 
-let timeRemaining = 480;
+let timeRemaining = 900;
 let timer = setInterval(function () {
     timeRemainingValue = timeRemaining;
     timeRemaining--;
@@ -8,13 +8,14 @@ let timer = setInterval(function () {
         clearInterval(timer);
         document.getElementById('time_remaining').innerText = 'Time is up!';
     } else {
-        document.getElementById('time_remaining').innerText = timeRemaining;
+        let timeLeft = timeRemaining / 60;
+        document.getElementById('time_remaining').innerText =
+            Math.floor(timeLeft) + ':' + Math.floor((timeLeft % 1) * 60);
     }
 }, 1000);
 
 async function updateTabName() {
     let tabs = await browser.tabs.query({ active: true });
-    console.log(tabs);
     let tabFavicon = tabs[0].favIconUrl;
     let tabUrl = new URL(tabs[0].url);
     document.getElementById('tab_title').innerText = tabUrl.hostname;
@@ -24,5 +25,6 @@ async function updateTabName() {
 function openOptions() {
     browser.runtime.openOptionsPage();
 }
+
 document.getElementById('open_options').addEventListener('click', openOptions);
 updateTabName();

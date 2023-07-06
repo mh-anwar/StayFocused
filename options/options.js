@@ -32,7 +32,4 @@ function updateAllowedSites() {
     chrome.storage.sync.set({ focusSites: sites });
 }
 
-darkModeToggle.addEventListener('change', () => {
-    document.body.classList.toggle('dark-mode');
-});
 submitAllowedSites.addEventListener('click', updateAllowedSites);

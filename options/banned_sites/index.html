@@ -10,6 +10,7 @@
 </head>
 
 <body>
+
     <h1>Banned Sites</h1>
     <ul>
         <li>Add one site per line</li>
@@ -25,7 +26,27 @@
         </div>
         <div class="view-banned-sites">
             <h2>Your List</h2>
-            <div class="banned-sites-list" id="banned_sites_view"></div>
+            <table class="banned-sites-list">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Sitename</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody id="banned_sites_view">
+                    <tr>
+                        <td>Site 1</td>
+                        <td>10:00 AM</td>
+                    </tr>
+                    <tr>
+                        <td>Site 2</td>
+                        <td>02:30 PM</td>
+                    </tr>
+
+                </tbody>
+            </table>
+
         </div>
     </div>
 

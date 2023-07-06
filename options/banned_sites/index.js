@@ -34,7 +34,7 @@ const commonBanned = [
     'ask.com',
 ];
 
-chrome.storage.onChanged.addListener(() => {
+browser.storage.onChanged.addListener(() => {
     displayMyBannedSites();
 });
 
@@ -99,11 +99,26 @@ function displayMyBannedSites() {
 
         for (let i = 0; i < sites.length; i++) {
             let site = sites[i];
-            let siteDiv = document.createElement('div');
-            siteDiv.innerText = site;
-            siteDiv.addEventListener('click', (e) =>
-                removeBannedSite(e.target.innerText, e)
+            let siteDiv = document.createElement('tr');
+            let siteRemove = document.createElement('td');
+            siteRemove.innerText = '❌  '; // yes sometimes we have to use emojis
+            let siteText = document.createElement('td');
+            siteText.innerText = site;
+
+            let siteTiming = document.createElement('td');
+            let siteTime = document.createElement('input');
+            siteTime.type = 'number';
+            siteTime.value = 15;
+            siteTiming.appendChild(siteTime);
+
+            siteRemove.addEventListener('click', (e) =>
+                removeBannedSite(site, e)
             );
+
+            siteDiv.appendChild(siteRemove);
+            siteDiv.appendChild(siteText);
+            siteDiv.appendChild(siteTiming);
+
             bannedSitesView.appendChild(siteDiv);
         }
     });

@@ -14,26 +14,235 @@
     <div class="header">
         <h1>FocusGuard</h1>
         <ul class="tabs">
-            <li><a href="#tab1" class="active">General Settings</a></li>
-            <li><a href="#tab2">Banned Sites</a></li>
-            <li><a href="#tab3">Allowed Sites</a></li>
-            <li><a href="#tab4">Emergency Lockdown</a></li>
+            <li><a href="#tab1" class="active">Daily Limit</a></li>
+            <li><a href="#tab2">Working Time</a></li>
+            <li><a href="#tab3">Banned Sites</a></li>
+            <li><a href="#tab4">Allowed Sites</a></li>
+            <li><a href="#tab5">Emergency Lockdown</a></li>
+            <li><a href="#tab6">Personalize</a></li>
         </ul>
     </div>
 
     <div id="tab1" class="tab-content active">
-        <label class="switch">
-            <input type="checkbox" id="darkModeToggle">
-            <span class="slider round"></span>
-        </label> Enable Dark Mode
+        <h1>Set your Daily Limit</h1>
+        <div>
+            <p>Choose how long until you have all website's are refocused after (default is 15 minutes)</p>
+            <input type="number" id="timeout" name="timeout" min="1" max="60" value="10"> minutes
+        </div>
+
     </div>
 
     <div id="tab2" class="tab-content">
-        <iframe src="./banned_sites/index.html" seamless></iframe>
+        <div class="working-info">
+            <h1>Set your Working Times</h1>
+            <span>
+                <div>
+                    <h2>Working Days</h2>
+                    <p>Choose which days you want FocusGuard to keep you focused on:</p>
+                    <form class="working-days">
+                        <label class="check-day-cont">Monday
+                            <input type="checkbox" checked="checked">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="check-day-cont">Tuesday
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="check-day-cont">Wednesday
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="check-day-cont">Thursday
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="check-day-cont">Friday
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="check-day-cont">Saturday
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="check-day-cont">Sunday
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        <br>
+                    </form>
+                </div>
 
+                <div>
+                    <h2>Working Hours</h2>
+                    <p>Choose what time you want FocusGuard to keep you focused during.</p>
+                    <label for="start-hour">Start Hour:</label>
+                    <div class="working-hours">
+                        <select id="start-hour">
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                        <select id="start-minute">
+                            <option value="00">00</option>
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                            <option value="32">32</option>
+                            <option value="33">33</option>
+                            <option value="34">34</option>
+                            <option value="35">35</option>
+                            <option value="36">36</option>
+                            <option value="37">37</option>
+                            <option value="38">38</option>
+                            <option value="39">39</option>
+                            <option value="40">40</option>
+                            <option value="41">41</option>
+                            <option value="42">42</option>
+                            <option value="43">43</option>
+                            <option value="44">44</option>
+                            <option value="45">45</option>
+                            <option value="46">46</option>
+                            <option value="47">47</option>
+                            <option value="48">48</option>
+                            <option value="49">49</option>
+                            <option value="50">50</option>
+                            <option value="51">51</option>
+                            <option value="52">52</option>
+                            <option value="53">53</option>
+                            <option value="54">54</option>
+                            <option value="55">55</option>
+                            <option value="56">56</option>
+                            <option value="57">57</option>
+                            <option value="58">58</option>
+                            <option value="59">59</option>
+                        </select>
+                    </div>
+                    <label for="end-hour">End Hour:</label>
+                    <div class="working-hours">
+                        <select id="end-hour">
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                        <select id="end-minute">
+                            <option value="00">00</option>
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                            <option value="32">32</option>
+                            <option value="33">33</option>
+                            <option value="34">34</option>
+                            <option value="35">35</option>
+                            <option value="36">36</option>
+                            <option value="37">37</option>
+                            <option value="38">38</option>
+                            <option value="39">39</option>
+                            <option value="40">40</option>
+                            <option value="41">41</option>
+                            <option value="42">42</option>
+                            <option value="43">43</option>
+                            <option value="44">44</option>
+                            <option value="45">45</option>
+                            <option value="46">46</option>
+                            <option value="47">47</option>
+                            <option value="48">48</option>
+                            <option value="49">49</option>
+                            <option value="50">50</option>
+                            <option value="51">51</option>
+                            <option value="52">52</option>
+                            <option value="53">53</option>
+                            <option value="54">54</option>
+                            <option value="55">55</option>
+                            <option value="56">56</option>
+                            <option value="57">57</option>
+                            <option value="58">58</option>
+                            <option value="59">59</option>
+                        </select>
+                    </div>
+                </div>
+            </span>
+        </div>
     </div>
 
     <div id="tab3" class="tab-content">
+        <iframe src="./banned_sites/index.html" seamless></iframe>
+    </div>
+
+    <div id="tab4" class="tab-content">
         <ul>
             <li>Add one site per line</li>
             <li>To allow the entire site simply use <code>instagram.com</code> instead of
@@ -43,9 +252,11 @@
         <textarea id="allowed_sites"></textarea>
         <button id="submit_allowed_sites">Add Allowed Sites</button>
     </div>
-    <div id="tab4" class="tab-content">
-        <h3>Tab 4 Content</h3>
-        <p>This is the content of Tab 3.</p>
+    <div id="tab5" class="tab-content">
+        emergency lockdown
+    </div>
+    <div id="tab6" class="tab-content">
+        personalize
     </div>
 </body>
 

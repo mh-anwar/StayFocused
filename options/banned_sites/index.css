@@ -2,8 +2,6 @@ body {
     background-color: white;
     color: black;
     transition: background-color 0.3s ease;
-    margin-right: 10%;
-    margin-left: 10%;
     font-size: 17px;
 }
 
@@ -13,11 +11,18 @@ body {
     overflow-y: scroll;
     border-radius: 0.5em;
     padding: 0.5em;
-    color: red;
+    cursor: pointer;
 }
 
-.banned-sites-list div::before {
-    content: "x ";
+.banned-sites-list th {
+    text-align: left;
+}
+
+
+
+.banned-sites-list span {
+    padding: 0.5em;
+    max-width: max-content;
 }
 
 .common-sites-list {
@@ -26,10 +31,8 @@ body {
     color: rebeccapurple;
 }
 
-
-
 .common-sites-list div::before {
-    content: "+ ";
+    content: "➕ ";
 }
 
 .common-sites-list div,
@@ -39,6 +42,7 @@ body {
     cursor: pointer;
     padding: 0.5em;
     gap: 0.3em;
+    align-items: center;
 }
 
 .banned-interface {
@@ -75,4 +79,20 @@ button {
     width: max-content;
     margin: 0.5em;
     align-self: center;
+}
+
+
+input[type=number] {
+    width: 5em;
+    border-radius: 0.5em;
+    border: 1px solid #ccc;
+    margin: 0.5em;
+    padding: 0.5em;
+    font-size: 16px;
+}
+
+input[type=number]:focus {
+    outline: none;
+    border-color: #2196F3;
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
 }
