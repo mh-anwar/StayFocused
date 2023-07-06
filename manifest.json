@@ -8,6 +8,9 @@
         }
     },
     "author": "mh-anwar",
+    "background": {
+        "scripts": ["background.js"]
+    },
     "browser_specific_settings": {
         "gecko": {
             "id": "your-addon-id@example.com"
@@ -33,7 +36,20 @@
         "page": "options/options.html",
         "open_in_tab": true
     },
-    "permissions": ["storage"],
+    "permissions": [
+        "storage",
+        "tabs",
+        "activeTab",
+        "webNavigation",
+        "webRequest",
+        "webRequestBlocking"
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": ["focus.html"],
+            "matches": ["<all_urls>"]
+        }
+    ],
     "short_name": "FocusGuard",
     "version": "1.0.0"
 }

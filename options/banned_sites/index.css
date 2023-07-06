@@ -1,0 +1,78 @@
+body {
+    background-color: white;
+    color: black;
+    transition: background-color 0.3s ease;
+    margin-right: 10%;
+    margin-left: 10%;
+    font-size: 17px;
+}
+
+.banned-sites-list {
+    max-height: 15em;
+    width: 100%;
+    overflow-y: scroll;
+    border-radius: 0.5em;
+    padding: 0.5em;
+    color: red;
+}
+
+.banned-sites-list div::before {
+    content: "x ";
+}
+
+.common-sites-list {
+    max-height: 15em;
+    overflow-y: scroll;
+    color: rebeccapurple;
+}
+
+
+
+.common-sites-list div::before {
+    content: "+ ";
+}
+
+.common-sites-list div,
+.banned-sites-list div {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    padding: 0.5em;
+    gap: 0.3em;
+}
+
+.banned-interface {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 3em;
+}
+
+.view-common-sites,
+.add-banned-sites,
+.view-banned-sites {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: max-content;
+    border-radius: 0.5em;
+    padding: 0.5em;
+}
+
+textarea {
+    font-size: 20px;
+    outline: none;
+    min-height: 10em;
+    border-radius: 0.5em;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    margin: 0.5em;
+}
+
+button {
+    padding: 0.5em;
+    width: max-content;
+    margin: 0.5em;
+    align-self: center;
+}

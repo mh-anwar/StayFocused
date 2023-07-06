@@ -1,3 +1,24 @@
+   html {
+       height: 100vh;
+       width: 100vw;
+   }
+
+   body {
+       background-color: white;
+       color: black;
+       transition: background-color 0.3s ease;
+       margin-right: 10%;
+       margin-left: 10%;
+       font-size: 17px;
+       height: 100vh;
+       width: 80vw;
+   }
+
+   iframe[seamless] {
+       border: none;
+       min-height: 90vh;
+   }
+
    .header {
        display: flex;
        flex-direction: row;
@@ -5,6 +26,9 @@
        justify-content: space-between;
        align-items: center;
        padding: 1em;
+       background-color: #148ef2;
+       border-radius: 0.5em;
+
    }
 
    .tabs {
@@ -52,13 +76,7 @@
        flex-direction: column;
    }
 
-   body {
-       background-color: white;
-       color: black;
-       transition: background-color 0.3s ease;
-       margin-right: 10%;
-       margin-left: 10%;
-   }
+
 
    .dark-mode {
        background-color: black;
@@ -120,45 +138,11 @@
    }
 
 
-   .common-sites-list {
-       width: 100%;
-       max-height: 20em;
-       overflow-y: scroll;
-   }
-
-   .common-sites-list div {
-       color: rebeccapurple;
-       cursor: pointer;
-       padding: 0.5em;
-   }
-
-   .banned-interface {
-       display: flex;
-       flex-direction: row;
-       justify-content: space-evenly;
-       flex-wrap: wrap;
-       gap: 5em;
-   }
-
-   .banned-interface div {
-       display: flex;
-       flex-direction: column;
-       flex-grow: 1;
-   }
-
-   textarea {
-       font-size: 20px;
-       outline: none;
-       min-height: 10em;
-       border-radius: 0.5em;
-       padding: 0.5em;
-       border: 1px solid #ccc;
-   }
-
    button {
        border: 1px solid #ccc;
-       border-radius: 0.5em;
+       border-radius: 0.3em;
        padding: 1em;
        max-width: max-content;
        align-self: center;
+       margin: 0.5em;
    }

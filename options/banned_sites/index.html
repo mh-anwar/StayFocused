@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusGuard</title>
+    <link rel="stylesheet" type="text/css" href="./index.css">
+    <script type="text/javascript" src="index.js" defer></script>
+</head>
+
+<body>
+    <h1>Banned Sites</h1>
+    <ul>
+        <li>Add one site per line</li>
+        <li>To block the entire site simply use <code>instagram.com</code> instead of
+            <code>https://instagram.com/helloworld/#test</code>
+        </li>
+    </ul>
+    <div class="banned-interface">
+        <div class="add-banned-sites">
+            <h2>Add Banned Sites</h2>
+            <textarea id="banned_sites_list"></textarea>
+            <button id="submit_banned_sites">Add Banned Sites</button>
+        </div>
+        <div class="view-banned-sites">
+            <h2>Your List</h2>
+            <div class="banned-sites-list" id="banned_sites_view"></div>
+        </div>
+    </div>
+
+    <div class="view-common-sites">
+        <h2>Common Banned Sites</h2>
+        <p>Click a site to add it to your list</p>
+        <div class="common-sites-list" id="common_sites_view"></div>
+    </div>
+</body>
+
+</html>
