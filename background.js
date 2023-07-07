@@ -5,7 +5,6 @@ browser.runtime.onInstalled.addListener((details) => {
             browser.tabs.create({
                 url: './install.html',
             });
-
             break;
     }
     browser.storage.sync.set({ focusSites: {} });
@@ -35,13 +34,4 @@ browser.runtime.onInstalled.addListener((details) => {
             },
         },
     });
-});
-
-// recieve message from content script
-browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    if (request.message === 'create-unfocus') {
-        browser.tabs.create({
-            url: './focus.html',
-        });
-    }
 });
