@@ -1,99 +1,54 @@
-let commonSitesView = document.getElementById('common_sites_view');
-const bannedSitesView = document.getElementById('banned_sites_view');
-const commonBanned = [
-    'facebook.com',
-    'twitter.com',
-    'instagram.com',
-    'reddit.com',
-    'youtube.com',
-    'netflix.com',
-    'tiktok.com',
-    'tumblr.com',
-    'pinterest.com',
-    'linkedin.com',
-    'whatsapp.com',
-    'snapchat.com',
-    'quora.com',
-    'telegram.com',
-    'twitch.tv',
-    'amazon.com',
-    'ebay.com',
-    'wikipedia.org',
-    'imdb.com',
-    'spotify.com',
-    'craigslist.org',
-    'yelp.com',
-    'etsy.com',
-    'bing.com',
-    'yahoo.com',
-    'duckduckgo.com',
-    'baidu.com',
-    'aol.com',
-    'ask.com',
-];
+const allowedSitesView = document.getElementById('allowed_sites_view');
 
-async function updateBannedSites() {
-    let userSiteInput = document.getElementById('banned_sites_list').value;
+async function updateAllowedSites() {
+    let userSiteInput = document.getElementById('allowed_sites_list').value;
 
     if (userSiteInput == '') return;
 
     browser.storage.sync.get(['focusSites'], (data) => {
-        let bannedSites = data.focusSites;
+        let allowedSites = data.focusSites;
 
-        bannedSites[userSiteInput] = {
-            banned: true,
-            allowed: false,
+        allowedSites[userSiteInput] = {
+            allowed: true,
+            banned: false,
             timeLeft: 15,
             timeDefault: 15,
         };
 
-        browser.storage.sync.set({ focusSites: bannedSites });
+        browser.storage.sync.set({ focusSites: allowedSites });
     });
 }
 
-function updateCommonSites(sites) {
-    for (let i = 0; i < commonBanned.length; i++) {
-        let site = commonBanned[i];
-        if (sites[site]) continue;
-        let siteRow = document.createElement('div');
-        siteRow.innerText = site;
-        siteRow.addEventListener('click', (e) =>
-            addBannedSite(e.target.innerText, e)
-        );
-        commonSitesView.appendChild(siteRow);
-    }
-}
-
-function addBannedSite(siteName, node = null) {
+function addAllowedSite(siteName, node = null) {
     browser.storage.sync.get(['focusSites'], (data) => {
-        let bannedSites = data.focusSites;
-        bannedSites[siteName] = {
-            banned: true,
-            allowed: false,
+        let allowedSites = data.focusSites;
+        allowedSites[siteName] = {
+            allowed: true,
+            banned: false,
             timeLeft: 15,
             timeDefault: 15,
         };
-        browser.storage.sync.set({ focusSites: bannedSites });
+        browser.storage.sync.set({ focusSites: allowedSites });
     });
     if (node) node.target.remove();
 }
 
-function removeBannedSite(siteName, node = null) {
+function removeAllowedSite(siteName, node = null) {
     browser.storage.sync.get(['focusSites'], (data) => {
-        let bannedSites = data.focusSites;
-        delete bannedSites[siteName];
-        browser.storage.sync.set({ focusSites: bannedSites });
+        let allowedSites = data.focusSites;
+        delete allowedSites[siteName];
+        browser.storage.sync.set({ focusSites: allowedSites });
     });
     if (node) node.target.remove();
 }
 
-function displayMyBannedSites(focusSites, generalSettings) {
+function displayMyAllowedSites(focusSites, generalSettings) {
     let timerPerSite = generalSettings.dailyLimit.timerPerSite;
     let sitesList = Object.entries(focusSites);
 
     for (let i = 0; i < sitesList.length; i++) {
         let site = sitesList[i][0];
-        if (focusSites[site]['allowed']) continue;
+        if (focusSites[site]['banned']) continue;
 
         let siteRow = document.createElement('tr');
         let siteText = document.createElement('td');
@@ -111,7 +66,7 @@ function displayMyBannedSites(focusSites, generalSettings) {
         } else {
             siteRow.appendChild(createTimeInput(generalSettings.dailyLimit));
         }
-        bannedSitesView.appendChild(siteRow);
+        allowedSitesView.appendChild(siteRow);
     }
 }
 
@@ -119,19 +74,19 @@ function createUserSiteInput(dailyLimit) {
     let createSiteRow = document.createElement('tr');
     let createSiteText = document.createElement('td');
     createSiteText.innerText = '➕';
-    createSiteText.addEventListener('click', updateBannedSites);
+    createSiteText.addEventListener('click', updateAllowedSites);
 
     let createSiteInfo = document.createElement('td');
     let createSiteInput = document.createElement('input');
     createSiteInput.type = 'text';
-    createSiteInput.id = 'banned_sites_list';
+    createSiteInput.id = 'allowed_sites_list';
     createSiteInput.placeholder = 'Enter a site per line';
     createSiteInfo.appendChild(createSiteInput);
 
     createSiteRow.appendChild(createSiteText);
     createSiteRow.appendChild(createSiteInfo);
     createSiteRow.appendChild(createTimeInput(dailyLimit));
-    bannedSitesView.prepend(createSiteRow);
+    allowedSitesView.prepend(createSiteRow);
 }
 
 const createTimeInput = (dailyLimit, timePerSite = false) => {
@@ -153,19 +108,17 @@ const createTimeInput = (dailyLimit, timePerSite = false) => {
 const createSiteRemoveInput = (site) => {
     let siteRemove = document.createElement('td');
     siteRemove.innerText = '❌  '; // yes sometimes we have to use emojis
-    siteRemove.addEventListener('click', (e) => removeBannedSite(site, e));
+    siteRemove.addEventListener('click', (e) => removeAllowedSite(site, e));
     return siteRemove;
 };
 
 browser.storage.sync.get('focusSites', async (data) => {
     let sites = typeof data === 'undefined' ? {} : data.focusSites;
-    updateCommonSites(sites);
     let generalSettings = await browser.storage.sync.get('focusGeneral');
     generalSettings = await generalSettings.focusGeneral;
-    bannedSitesView.innerHTML = '';
+    allowedSitesView.innerHTML = '';
     createUserSiteInput(generalSettings.dailyLimit);
-    console.log(generalSettings);
-    displayMyBannedSites(sites, generalSettings);
+    displayMyAllowedSites(sites, generalSettings);
 });
 
 browser.storage.onChanged.addListener(async (e) => {
@@ -173,8 +126,8 @@ browser.storage.onChanged.addListener(async (e) => {
         let sites = e.focusSites.newValue;
         let generalSettings = await browser.storage.sync.get('focusGeneral');
         generalSettings = await generalSettings.focusGeneral;
-        bannedSitesView.innerHTML = '';
+        allowedSitesView.innerHTML = '';
         createUserSiteInput(generalSettings.dailyLimit);
-        displayMyBannedSites(sites, generalSettings);
+        displayMyAllowedSites(sites, generalSettings);
     }
 });

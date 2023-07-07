@@ -25,9 +25,27 @@
 
     <div id="tab1" class="tab-content active">
         <h1>Set your Daily Limit</h1>
-        <div>
-            <p>Choose how long until you have all website's are refocused after (default is 15 minutes)</p>
-            <input type="number" id="timeout" name="timeout" min="1" max="60" value="10"> minutes
+        <p>Choose between a timer per site or a total timer</p>
+
+        <div class="daily-limit">
+            <form id="daily_limit_form">
+                <label for="total_timer">
+                    <input type="radio" name="radio" id="total_timer">
+                    Use Total Timer
+                </label>
+                <br />
+                <label for="timer_per_site">
+                    <input type="radio" name="radio" id="timer_per_site">
+                    Use Timer Per Site
+                </label>
+            </form>
+
+            <div>
+                <input type="number" id="daily_time_limit" value="15">
+                <p>Enter time in minutes</p>
+            </div>
+
+            <button id="submit_daily_limit">Save Daily Limit Settings</button>
         </div>
 
     </div>
@@ -40,35 +58,40 @@
                     <h2>Working Days</h2>
                     <p>Choose which days you want FocusGuard to keep you focused on:</p>
                     <form class="working-days">
-                        <label class="check-day-cont">Monday
-                            <input type="checkbox" checked="checked">
-                            <span class="checkmark"></span>
+                        <label class="checkbox-label" for="day_monday">
+                            <input type="checkbox" id="day_monday" name="working_day" value="Monday">
+                            Monday
                         </label>
-                        <label class="check-day-cont">Tuesday
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
+
+                        <label class="checkbox-label" for="day_tuesday">
+                            <input type="checkbox" id="day_tuesday" name="working_day" value="Tuesday">
+                            Tuesday
                         </label>
-                        <label class="check-day-cont">Wednesday
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
+
+                        <label class="checkbox-label" for="day_wednesday">
+                            <input type="checkbox" id="day_wednesday" name="working_day" value="Wednesday">
+                            Wednesday
                         </label>
-                        <label class="check-day-cont">Thursday
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
+
+                        <label class="checkbox-label" for="day_thursday">
+                            <input type="checkbox" id="day_thursday" name="working_day" value="Thursday">
+                            Thursday
                         </label>
-                        <label class="check-day-cont">Friday
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
+
+                        <label class="checkbox-label" for="day_friday">
+                            <input type="checkbox" id="day_friday" name="working_day" value="Friday">
+                            Friday
                         </label>
-                        <label class="check-day-cont">Saturday
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
+
+                        <label class="checkbox-label" for="day_saturday">
+                            <input type="checkbox" id="day_saturday" name="working_day" value="Saturday">
+                            Saturday
                         </label>
-                        <label class="check-day-cont">Sunday
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
+
+                        <label class="checkbox-label" for="day_sunday">
+                            <input type="checkbox" id="day_sunday" name="working_day" value="Sunday">
+                            Sunday
                         </label>
-                        <br>
                     </form>
                 </div>
 
@@ -77,7 +100,7 @@
                     <p>Choose what time you want FocusGuard to keep you focused during.</p>
                     <label for="start-hour">Start Hour:</label>
                     <div class="working-hours">
-                        <select id="start-hour">
+                        <select id="working_start_hour">
                             <option value="01">01</option>
                             <option value="02">02</option>
                             <option value="03">03</option>
@@ -91,7 +114,7 @@
                             <option value="11">11</option>
                             <option value="12">12</option>
                         </select>
-                        <select id="start-minute">
+                        <select id="working_start_minute">
                             <option value="00">00</option>
                             <option value="01">01</option>
                             <option value="02">02</option>
@@ -156,7 +179,7 @@
                     </div>
                     <label for="end-hour">End Hour:</label>
                     <div class="working-hours">
-                        <select id="end-hour">
+                        <select id="working_end_hour">
                             <option value="01">01</option>
                             <option value="02">02</option>
                             <option value="03">03</option>
@@ -170,7 +193,7 @@
                             <option value="11">11</option>
                             <option value="12">12</option>
                         </select>
-                        <select id="end-minute">
+                        <select id="working_end_minute">
                             <option value="00">00</option>
                             <option value="01">01</option>
                             <option value="02">02</option>
@@ -243,14 +266,7 @@
     </div>
 
     <div id="tab4" class="tab-content">
-        <ul>
-            <li>Add one site per line</li>
-            <li>To allow the entire site simply use <code>instagram.com</code> instead of
-                <code>https://instagram.com/helloworld/#test</code>
-            </li>
-        </ul>
-        <textarea id="allowed_sites"></textarea>
-        <button id="submit_allowed_sites">Add Allowed Sites</button>
+        <iframe src="./allowed_sites/index.html" seamless></iframe>
     </div>
     <div id="tab5" class="tab-content">
         emergency lockdown

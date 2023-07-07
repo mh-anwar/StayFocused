@@ -1,0 +1,92 @@
+body {
+    background-color: white;
+    color: black;
+    transition: background-color 0.3s ease;
+    font-size: 17px;
+}
+
+.allowed-sites-list {
+    max-height: 15em;
+    width: 100%;
+    overflow-y: scroll;
+    border-radius: 0.5em;
+    padding: 0.5em;
+    cursor: pointer;
+}
+
+.allowed-sites-list th {
+    text-align: left;
+}
+
+.allowed-sites-list td {
+    border-top: 1px solid #ccc;
+    margin: 0.5em;
+    padding: 0.5em;
+}
+
+.allowed-sites-list span {
+    padding: 0.5em;
+    max-width: max-content;
+}
+
+.allowed-sites-list div {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    padding: 0.5em;
+    gap: 0.3em;
+    align-items: center;
+}
+
+.allowed-interface {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 3em;
+}
+
+.add-allowed-sites,
+.view-allowed-sites {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: max-content;
+    border-radius: 0.5em;
+    padding: 0.5em;
+}
+
+textarea,
+input[type=text] {
+    outline: none;
+    border-radius: 0.5em;
+    border: 1px solid #ccc;
+
+    padding: 0.5em;
+    font-size: 16px;
+    width: 90%;
+}
+
+button {
+    padding: 0.5em;
+    width: max-content;
+    margin: 0.5em;
+    align-self: center;
+}
+
+
+input[type=number] {
+    width: 5em;
+    border-radius: 0.5em;
+    border: 1px solid #ccc;
+    margin: 0.5em;
+    padding: 0.5em;
+    font-size: 16px;
+}
+
+input[type=number]:focus,
+input[type=text]:focus {
+    outline: none;
+    border-color: #2196F3;
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+}
