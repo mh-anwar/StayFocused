@@ -1,3 +1,4 @@
+import { addSite } from '../../Storage.js';
 let commonSitesView = document.getElementById('common_sites_view');
 const bannedSitesView = document.getElementById('banned_sites_view');
 const commonBanned = [
@@ -36,19 +37,7 @@ async function updateBannedSites() {
     let userSiteInput = document.getElementById('banned_sites_list').value;
 
     if (userSiteInput == '') return;
-
-    browser.storage.sync.get(['focusSites'], (data) => {
-        let bannedSites = data.focusSites;
-
-        bannedSites[userSiteInput] = {
-            banned: true,
-            allowed: false,
-            timeLeft: 15,
-            timeDefault: 15,
-        };
-
-        browser.storage.sync.set({ focusSites: bannedSites });
-    });
+    addSite(userSiteInput, 'banned');
 }
 
 function updateCommonSites(sites) {
@@ -65,25 +54,12 @@ function updateCommonSites(sites) {
 }
 
 function addBannedSite(siteName, node = null) {
-    browser.storage.sync.get(['focusSites'], (data) => {
-        let bannedSites = data.focusSites;
-        bannedSites[siteName] = {
-            banned: true,
-            allowed: false,
-            timeLeft: 15,
-            timeDefault: 15,
-        };
-        browser.storage.sync.set({ focusSites: bannedSites });
-    });
+    addSite(siteName, 'banned');
     if (node) node.target.remove();
 }
 
 function removeBannedSite(siteName, node = null) {
-    browser.storage.sync.get(['focusSites'], (data) => {
-        let bannedSites = data.focusSites;
-        delete bannedSites[siteName];
-        browser.storage.sync.set({ focusSites: bannedSites });
-    });
+    removeSite(siteName);
     if (node) node.target.remove();
 }
 

@@ -11,19 +11,12 @@ browser.storage.sync.get(['focusSites'], (data) => {
     browser.storage.sync.set({ focusSites: bannedSites });
     console.log(document.visibilityState === 'visible');
 
-    let hostname = window.location.hostname;
-    let href = window.location.href;
-    let origin = window.location.origin;
-    if (bannedSites[hostname] && bannedSites[hostname].banned) {
-        determineBlockingStrategy(bannedSites[hostname]);
-    } else if (bannedSites[origin] && bannedSites[origin].banned) {
-        determineBlockingStrategy(bannedSites[origin]);
-    } else if (bannedSites[href] && bannedSites[href].banned) {
-        determineBlockingStrategy(bannedSites[href]);
-    }
+    let tabURL = determineTabURL(window.location);
+    determineBlockingStrategy(tabURL, bannedSites);
 });
 
-const determineBlockingStrategy = (siteData) => {
+const determineBlockingStrategy = (tabURL, bannedSites) => {
+    let siteData = bannedSites[tabURL];
     if (siteData.timeLeft <= 0) {
         unfocusPage();
     } else {
@@ -31,12 +24,12 @@ const determineBlockingStrategy = (siteData) => {
         document.addEventListener('visibilitychange', function () {
             if (document.visibilityState === 'visible') {
                 interval = setInterval(
-                    (siteData) => updateTimer(siteData),
+                    (siteData) => updateTime(siteData.timeLeft - 0.5, tabURL),
                     30000
                 );
             } else {
+                clearInterval(interval);
             }
-            clearInterval(interval);
         });
     }
 };
@@ -44,6 +37,3 @@ const determineBlockingStrategy = (siteData) => {
 const unfocusPage = async () => {
     window.location.href = await browser.runtime.getURL('focus.html');
 };
-
-// Update the time in browser storage and on the page, then block page if time is up
-const updateTimer = () => {};
