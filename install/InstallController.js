@@ -1,5 +1,4 @@
-document.getElementById('provide_perms').addEventListener('click', () => {
-    console.log('clicked');
+function requestPerms() {
     chrome.permissions.request(
         {
             origins: ['<all_urls>'],
@@ -12,4 +11,19 @@ document.getElementById('provide_perms').addEventListener('click', () => {
             }
         }
     );
-});
+}
+
+chrome.permissions.contains(
+    {
+        origins: ['<all_urls>'],
+    },
+    function (result) {
+        if (result) {
+            document.getElementById('permissions_alert').style.display = 'none';
+        } else {
+            document
+                .getElementById('provide_perms')
+                .addEventListener('click', requestPerms);
+        }
+    }
+);

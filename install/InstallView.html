@@ -17,26 +17,33 @@
     <div>
 
         <h2>Thank you for installing StayFocused!</h2>
-        <p>StayFocused is a chrome extension that helps you stay focused on your work by blocking distracting websites.
+        <p>
+            StayFocused is a <b>free and <a href="https://github.com/mh-anwar/StayFocused">open source</a></b> extension
+            that helps you stay focused on your work by blocking distracting
+            websites.
         </p>
-        <p>StayFocused is a free extension that is open source and can be found on <a
-                href="https://github.com/mh-anwar/StayFocused">GitHub</a>.</p>
-        <p>StayFocused is a work in progress and will be updated with new features and bug fixes.</p>
 
         <h2>Features</h2>
         <ul>
             <li>Block distracting websites</li>
             <li>Block websites for a certain amount of time</li>
+            <li>Initiate <b>Emergency Mode</b> to block all websites</li>
         </ul>
         <h2>Permissions</h2>
         <ul>
-            <li>Storage - to store your data</li>
-            <li>Tabs - to block websites</li>
+            <li>Storage - to store your settings</li>
+            <li>Tabs (website data) - to block websites</li>
         </ul>
     </div>
-    <div>
-        For StayFocused to work it need access to your tabs. Click to provide your permission.
-        <button id="provide_perms">Provide Permissions</button>
+    <div class="important-div" id="permissions_alert">
+        <div class="alert-container">
+            <span class="alert-icon">⚠️</span>
+            <span class="alert-text">
+                For StayFocused to block websites, it needs access to your website data (tabs).
+                Click to provide your permission.
+            </span>
+            <button class="alert-button" id="provide_perms">Provide Permissions</button>
+        </div>
     </div>
 </body>
 

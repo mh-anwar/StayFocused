@@ -1,12 +1,12 @@
 html {
     height: 100vh;
     width: 100vw;
+    background-color: aliceblue;
 }
 
 body {
     display: flex;
     flex-direction: column;
-    background-color: white;
     color: black;
     margin-right: 10%;
     margin-left: 10%;
@@ -31,4 +31,46 @@ header {
     background-color: #148ef2;
     padding: 1em;
     border-radius: 0.5em;
+    text-align: center;
+}
+
+.important-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.alert-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f44336;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.alert-icon {
+    margin-right: 10px;
+    font-size: 1.5em;
+    color: #ffffff;
+}
+
+.alert-text {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.alert-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    color: #f44336;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.alert-button:hover {
+    background-color: #e0e0e0;
 }
