@@ -19,13 +19,13 @@ let interval;
 browser.storage.sync.get(['focusSites'], async (data) => {
     let bannedSites = data.focusSites;
     // Remove
-    bannedSites['blank.org'] = {
+    /*     bannedSites['blank.org'] = {
         banned: true,
         allowed: false,
         timeLeft: 15,
         timeDefault: 15,
     };
-    browser.storage.sync.set({ focusSites: bannedSites });
+    browser.storage.sync.set({ focusSites: bannedSites }); */
     //Remove
 
     let tabURL = await determineTabURL(window.location);

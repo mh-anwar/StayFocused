@@ -1,9 +1,23 @@
 let globalTabURL = null;
 
+function isBase64(input) {
+    try {
+        return btoa(atob(input)) === input;
+    } catch (e) {
+        return false;
+    }
+}
+
 async function updateTabName() {
     let tabData = await getTabData();
     document.getElementById('tab_title').innerText = tabData.tabUrl;
-    document.getElementById('tab_favicon').src = tabData.tabFavicon;
+
+    try {
+        let tabFavIcon = new URL(tabData.tabFavicon);
+        document.getElementById('tab_favicon').src = tabData.tabFavicon;
+    } catch (error) {
+        document.getElementById('tab_favicon').style.display = 'none';
+    }
 }
 
 function openOptions() {
@@ -44,8 +58,42 @@ async function getTabData() {
     };
 }
 
+function displayAllowedSite() {
+    document.getElementById('focus_time').innerText = 'Allowed';
+}
+
+function addSite(site, siteType, timeLeft = 15, timeDefault = 15) {
+    browser.storage.sync.get('focusSites', (data) => {
+        data = data.focusSites;
+        data[site] = {
+            banned: siteType == 'banned' ? true : false,
+            allowed: siteType == 'allowed' ? true : false,
+            timeLeft: timeLeft,
+            timeDefault: timeDefault,
+        };
+        browser.storage.sync.set({ focusSites: data });
+    });
+}
+
+function reloadTabs(tabUrl) {
+    console.log(tabUrl);
+    chrome.tabs.query({ url: 'https://' + tabUrl + '/*' }, function (tabs) {
+        // Loop through each tab and reload it
+        console.log(tabs);
+        tabs.forEach(function (tab) {
+            chrome.tabs.reload(tab.id);
+        });
+        window.close();
+    });
+}
+
+document.getElementById('block_site').addEventListener('click', () => {
+    addSite(globalTabURL, 'banned');
+    reloadTabs(globalTabURL);
+});
 document.getElementById('open_options').addEventListener('click', openOptions);
 updateTabName();
+
 setInterval(async function () {
     if (globalTabURL == null) {
         globalTabURL = await getTabData().tabdata.tabUrl;
@@ -71,27 +119,3 @@ setInterval(async function () {
         }
     }
 }, 1000);
-
-function displayAllowedSite() {
-    document.getElementById('focus_time').innerText = 'Allowed';
-}
-
-function addSite(site, siteType, timeLeft = 15, timeDefault = 15) {
-    browser.storage.sync.get('focusSites', (data) => {
-        data = data.focusSites;
-        data[site] = {
-            banned: siteType == 'banned' ? true : false,
-            allowed: siteType == 'allowed' ? true : false,
-            timeLeft: timeLeft,
-            timeDefault: timeDefault,
-        };
-        browser.storage.sync.set({ focusSites: data });
-    });
-}
-
-function reloadTab() {
-    browser.tabs.reload();
-}
-document
-    .getElementById('block_site')
-    .addEventListener('click', () => addSite(globalTabURL, 'banned'));

@@ -1,16 +1,17 @@
 html {
     width: 500px !important;
-    height: 300px !important;
-    text-align: center;
-    font-size: 18px;
+    height: 280px !important;
+
     margin: 0;
 }
 
 body {
     width: 500px !important;
-    height: 300px !important;
+    height: 280px !important;
     display: flex;
     flex-direction: column;
+    text-align: center;
+    font-size: 18px;
     margin: 0;
 }
 
@@ -23,32 +24,13 @@ a:hover {
     text-decoration: underline;
 }
 
-h1 {
-    padding: 0;
-    flex-grow: 0;
-    margin: 0;
-}
-
 .time-info {
+    margin-top: auto;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly;
-    padding: 0.5em;
-    gap: 0.3em;
-    flex-grow: 1;
     user-select: none;
-}
-
-.focus-time {
-    display: flex;
-    flex-direction: column;
-    background-color: aliceblue;
-    justify-content: center;
-    align-items: center;
-    padding: 1em;
-    border-radius: 0.5em;
     max-height: fit-content;
 }
 
@@ -64,23 +46,38 @@ h1 {
     cursor: pointer;
 }
 
+.timer {
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    border-radius: 0.5em;
+    max-height: fit-content;
+}
+
 .site-data {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 0.5em;
+    gap: 0.2em;
+    padding: 0.3em;
+}
+
+.site-icon {
+    background-color: black;
 }
 
 .links {
-    flex-grow: 0;
     border-top: 1px solid #ccc;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: space-evenly;
     padding: 1em;
     align-items: center;
     gap: 0.3em;
+    margin-top: auto;
 }
 
 .time-cell {

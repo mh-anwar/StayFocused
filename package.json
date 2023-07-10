@@ -1,0 +1,16 @@
+{
+    "name": "stayfocused",
+    "version": "1.0.0",
+    "description": "Firefox alternative to StayFocusd.",
+    "main": "background.js",
+    "scripts": {
+        "test": "TMPDIR=~/tmp-dir/ web-ext run --config=config.js",
+        "build": "web-ext build",
+        "lint": "web-ext lint"
+    },
+    "author": "mh-anwar",
+    "license": "MIT",
+    "dependencies": {
+        "web-ext": "^7.6.2"
+    }
+}
