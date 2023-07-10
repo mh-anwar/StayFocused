@@ -1,9 +1,8 @@
-function updateTime(newTime, site) {
-    browser.storage.sync.get('focusSites', (data) => {
-        data = data.focusSites;
-        data[site].timeLeft = newTime;
-        return data;
-    });
+async function updateTime(newTime, site) {
+    let data = await browser.storage.sync.get('focusSites');
+    data = data.focusSites;
+    data[site].timeLeft = newTime;
+    return data;
 }
 
 function determineTabURL(url) {
@@ -23,3 +22,5 @@ function determineTabURL(url) {
         }
     });
 }
+
+export { determineTabURL, updateTime };

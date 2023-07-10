@@ -1,6 +1,6 @@
 {
     "action": {
-        "default_popup": "popup/popup.html",
+        "default_popup": "popup/PopupView.html",
         "default_title": "Click Me!",
         "default_icon": {
             "16": "images/icon_16.png",
@@ -13,7 +13,7 @@
     },
     "browser_specific_settings": {
         "gecko": {
-            "id": "your-addon-id@example.com"
+            "id": "mohammad@anwar.app"
         }
     },
     "content_scripts": [
@@ -33,20 +33,13 @@
     "manifest_version": 3,
     "name": "FocusGuard",
     "options_ui": {
-        "page": "options/options.html",
+        "page": "options/OptionsView.html",
         "open_in_tab": true
     },
-    "permissions": [
-        "storage",
-        "tabs",
-        "activeTab",
-        "webNavigation",
-        "webRequest",
-        "webRequestBlocking"
-    ],
+    "permissions": ["storage"],
     "web_accessible_resources": [
         {
-            "resources": ["focus.html"],
+            "resources": ["./refocus/RefocusView.html"],
             "matches": ["<all_urls>"]
         }
     ],

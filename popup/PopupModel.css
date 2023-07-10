@@ -1,18 +1,44 @@
-html,
-body {
-    min-width: 500px !important;
-    min-height: 200px !important;
+html {
+    width: 500px !important;
+    height: 300px !important;
     text-align: center;
     font-size: 18px;
+    margin: 0;
+}
+
+body {
+    width: 500px !important;
+    height: 300px !important;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+a {
+    cursor: pointer;
+    user-select: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    padding: 0;
+    flex-grow: 0;
+    margin: 0;
 }
 
 .time-info {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: space-evenly;
-    padding: 0.3em;
+    padding: 0.5em;
     gap: 0.3em;
+    flex-grow: 1;
+    user-select: none;
 }
 
 .focus-time {
@@ -21,8 +47,9 @@ body {
     background-color: aliceblue;
     justify-content: center;
     align-items: center;
-    padding: 0.5em;
+    padding: 1em;
     border-radius: 0.5em;
+    max-height: fit-content;
 }
 
 .website-info {
@@ -37,13 +64,22 @@ body {
     cursor: pointer;
 }
 
+.site-data {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5em;
+}
+
 .links {
+    flex-grow: 0;
     border-top: 1px solid #ccc;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    padding: 0.3em;
+    padding: 1em;
+    align-items: center;
     gap: 0.3em;
 }
 
@@ -51,5 +87,4 @@ body {
     font-family: 'Courier New', Courier, monospace;
     font-size: 19px;
     font-weight: bold;
-
 }

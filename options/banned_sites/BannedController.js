@@ -1,4 +1,3 @@
-import { addSite } from '../../Storage.js';
 let commonSitesView = document.getElementById('common_sites_view');
 const bannedSitesView = document.getElementById('banned_sites_view');
 const commonBanned = [
@@ -32,6 +31,19 @@ const commonBanned = [
     'aol.com',
     'ask.com',
 ];
+
+function addSite(site, siteType, timeLeft = 15, timeDefault = 15) {
+    browser.storage.sync.get('focusSites', (data) => {
+        data = data.focusSites;
+        data[site] = {
+            banned: siteType == 'banned' ? true : false,
+            allowed: siteType == 'allowed' ? true : false,
+            timeLeft: timeLeft,
+            timeDefault: timeDefault,
+        };
+        browser.storage.sync.set({ focusSites: data });
+    });
+}
 
 async function updateBannedSites() {
     let userSiteInput = document.getElementById('banned_sites_list').value;

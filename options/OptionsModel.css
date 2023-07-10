@@ -1,0 +1,154 @@
+html {
+    height: 100vh;
+    width: 100vw;
+}
+
+body {
+    background-color: white;
+    color: black;
+    margin-right: 10%;
+    margin-left: 10%;
+    font-size: 17px;
+    height: 100vh;
+    width: 80vw;
+}
+
+iframe[seamless] {
+    border: none;
+    min-height: 90vh;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+    background-color: #148ef2;
+    border-radius: 0.5em;
+}
+
+.tabs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin: 0;
+    padding: 0.5em;
+    gap: 0.5em;
+    overflow: hidden;
+}
+
+.tabs li {
+    flex-grow: 1;
+    border-radius: 0.5em;
+}
+
+.tabs li a {
+    border-radius: 0.3em;
+    display: block;
+    padding: 0.5em;
+    background-color: #f1f1f1;
+    color: #333;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.tabs li a.active {
+    background-color: #ccc;
+}
+
+.tabs li a:hover {
+    background-color: #9d9999;
+}
+
+.tab-content {
+    display: none;
+    padding: 1em;
+}
+
+.tab-content.active {
+    display: flex;
+    flex-direction: column;
+}
+
+.daily-limit {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 5em;
+    row-gap: 2em;
+    margin-top: 1em;
+    justify-content: center;
+}
+
+.working-info {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 1em;
+}
+
+.working-info span {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+.working-hours {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: min-content;
+}
+
+label {
+    display: flex;
+    flex-direction: row;
+    gap: 0.3em;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    margin: 0.2em;
+    align-items: center;
+}
+
+input[type=checkbox],
+input[type=radio] {
+    display: block;
+    cursor: pointer;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 20%;
+}
+
+input[type=number],
+select {
+    padding: 0.8em;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type=number]:focus,
+select:focus {
+    outline: none;
+    border-color: #2196F3;
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+}
+
+button {
+    border: 1px solid #ccc;
+    border-radius: 0.3em;
+    padding: 1em;
+    max-width: max-content;
+    align-self: center;
+    margin: 0.5em;
+}

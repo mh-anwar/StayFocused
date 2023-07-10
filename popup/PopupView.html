@@ -3,26 +3,25 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FocusGuard</title>
-    <link rel="stylesheet" type="text/css" href="./popup.css">
-    <script type="text/javascript" src="popup.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="PopupModel.css">
+    <script type="text/javascript" src="PopupController.js" defer></script>
 </head>
 
 <body>
     <h1>FocusGuard</h1>
     <div class="time-info">
-        <div class="website-info">
+        <div class="website-info" id="block_site">
             <a>Block</a>
-            <div>
+            <div class="site-data">
                 <img id="tab_favicon" class="tab-icon-cell" width="20" height="20" />
                 <span id="tab_title"></span>
             </div>
         </div>
-        <div class="focus-time">
+        <div class="focus-time" id="focus_time">
             <p>FocusTime Starts in:</p>
-            <span id="time_remaining" class="time-cell">15:00</span>
+            <span id="time_remaining" class="time-cell">--:--</span>
         </div>
     </div>
 

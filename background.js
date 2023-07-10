@@ -3,7 +3,7 @@ browser.runtime.onInstalled.addListener((details) => {
     switch (reason) {
         case 'install':
             browser.tabs.create({
-                url: './install.html',
+                url: './install/InstallView.html',
             });
             break;
     }
