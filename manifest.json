@@ -22,7 +22,7 @@
             "js": ["content.js"]
         }
     ],
-    "description": "FocusGuard keeps you focussed.",
+    "description": "StayFocused hides distractions and keeps you focussed.",
     "host_permissions": ["<all_urls>"],
     "icons": {
         "16": "images/icon_16.png",
@@ -31,7 +31,7 @@
         "128": "images/icon_128.png"
     },
     "manifest_version": 3,
-    "name": "FocusGuard",
+    "name": "StayFocused",
     "options_ui": {
         "page": "options/OptionsView.html",
         "open_in_tab": true
@@ -43,6 +43,6 @@
             "matches": ["<all_urls>"]
         }
     ],
-    "short_name": "FocusGuard",
+    "short_name": "StayFocused",
     "version": "1.0.0"
 }
